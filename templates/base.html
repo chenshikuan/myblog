@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">{# 响应式布局，pc，移动端自适应 #}
+    <title>{% block title %}{% endblock %}</title>
+{#    <link rel="stylesheet" href="/static/base.css">#}
+    <link rel="stylesheet" href="{% static 'base.css' %}"> {# django 独有 #}
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+    {% block header_extends %}
+    {% endblock %}
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}">个人博客网站</a>
+{#                <button type="button" class="navbar-toggle collapsed" data-target="#navbar-cpllapse"></button>#}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>{# pc端调整窗口较小时，自动成下拉列表#}
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="{% block nav_home_active %}{% endblock %}">
+                        <a href="{% url 'home' %}">首页</a>
+                    </li>
+                    <li class="{% block nav_blog_active %}{% endblock %}">
+                        <a href="{% url 'blog_list' %}">博客</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% block context%}
+    {% endblock %}
+</body>
+</html>
