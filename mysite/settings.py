@@ -141,3 +141,11 @@ CKEDITOR_UPLOAD_PATH = 'upload/'  #在media下的upload
 
 #self-defined parameter
 EACH_PAGE_BLOG_NUMBER = 5
+
+#缓存设置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
