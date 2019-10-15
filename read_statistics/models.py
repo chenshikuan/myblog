@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 
+
 # Create your models here.
 class ReadNum(models.Model):
     read_num = models.IntegerField(default=0)
@@ -19,6 +20,7 @@ class ReadNumExpandMethod():
             return readnum.read_num
         except exceptions.ObjectDoesNotExist:
             return str(0)
+
 
 
 class ReadDetail(models.Model):
